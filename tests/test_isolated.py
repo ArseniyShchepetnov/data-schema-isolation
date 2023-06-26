@@ -42,7 +42,11 @@ def test_preprocessed() -> None:
     data = DataIsolatedSchema.from_csv(
         "tests/data.csv", preprocess=Preprocess(columns)
     )
+    assert data.n_samples == 5
     assert data.data[columns.height].max() < 3
+    assert data.data[columns.name].str.istitle().sum() == 5
+    assert data.data[columns.city].isna().sum() == 1
+    assert data.data[columns.city].notna().sum() == 4
 
 
 def test_get_city_data() -> None:
@@ -51,7 +55,11 @@ def test_get_city_data() -> None:
     data = DataIsolatedSchema.from_csv(
         "tests/data.csv", preprocess=Preprocess(columns)
     )
-    assert data.get_city_data("Paris").n_samples == 2
+    paris_data = data.get_city_data("Paris")
+    assert paris_data.n_samples == 2
+    assert paris_data.data[columns.height].max() < 3
+    assert paris_data.data[columns.name].str.istitle().sum() == 2
+    assert paris_data.data[columns.city].isna().sum() == 0
 
 
 def test_names() -> None:

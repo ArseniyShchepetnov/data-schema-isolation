@@ -78,7 +78,7 @@ class DataIsolatedSchema:
         return cls(data, columns=columns)
 
     def get_city_data(self, city: str) -> "DataIsolatedSchema":
-        """Return data for a city."""
+        """Slice data for a city and preserve schema."""
         return DataIsolatedSchema(
             self.data[self.data[self.c.city] == city], columns=self.columns
         )
