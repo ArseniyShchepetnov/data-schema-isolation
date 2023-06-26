@@ -31,7 +31,7 @@ jobs:
           poetry run ruff check --no-fix .
       - name: Lint tests with mypy
         run: |
-          poetry run mypy --install-types --non-interactive --ignore-missing-imports
+          poetry run mypy --install-types --non-interactive --ignore-missing-imports .
       - name: Test with pytest
         run: |
           poetry run pytest --cov=example tests

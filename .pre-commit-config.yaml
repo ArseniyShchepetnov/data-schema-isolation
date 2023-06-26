@@ -32,7 +32,7 @@ repos:
     - id: python-mypy
       verbose: true
       name: MyPy type check
-      entry: poetry run mypy --install-types --non-interactive
+      entry: poetry run mypy --install-types --non-interactive .
       language: system
       stages:
         - commit
