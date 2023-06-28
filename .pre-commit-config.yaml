@@ -13,7 +13,7 @@ repos:
       verbose: true
       name: Black Formatter
       entry: poetry run black
-      language: system
+      language: python
       stages:
         - commit
       types:
@@ -23,7 +23,7 @@ repos:
       verbose: true
       name: Ruff Linter
       entry: poetry run ruff check --fix
-      language: system
+      language: python
       stages:
         - commit
       types:
@@ -32,10 +32,9 @@ repos:
     - id: python-mypy
       verbose: true
       name: MyPy type check
-      entry: poetry run mypy --install-types --non-interactive .
-      language: system
-      stages:
-        - commit
+      entry: poetry run mypy --install-types --non-interactive --ignore-missing-imports .
+      language: python
+      pass_filenames: false
       types:
         - python
 
@@ -43,7 +42,7 @@ repos:
       verbose: true
       name: Test with pytest
       entry: poetry run pytest --cov=example tests
-      language: system
+      language: python
       stages:
         - commit
       types:

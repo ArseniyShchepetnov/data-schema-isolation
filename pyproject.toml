@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "example-data-schema-isolation"
+name = "data-schema-isolation"
 version = "0.1.0"
 description = ""
 authors = ["Your name (or your organization/company/team)"]
