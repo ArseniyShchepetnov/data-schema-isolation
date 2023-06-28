@@ -1,4 +1,5 @@
 """Isolated data schema."""
+import functools
 from collections.abc import Callable
 
 import pandas as pd
@@ -14,7 +15,13 @@ class Columns(BaseModel):
     height: str = "Height"
     name: str = "Name"
 
+    class Config:
+        """Pydantic configuration."""
 
+        frozen = True
+
+
+@functools.cache
 def get_data_schema(columns: Columns) -> pa.DataFrameSchema:
     """Return data schema for a DataFrame."""
     return pa.DataFrameSchema(
