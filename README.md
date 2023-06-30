@@ -1,3 +1,4 @@
-# example-data-schema-isolation
+# Data Schema Isolation
 
-A short description of the project.
+A helper design pattern to work with data and schemas.
+https://medium.com/@a.shchepetnov/data-schema-isolation-pattern-a4013ae0cf7f
